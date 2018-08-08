@@ -7,6 +7,7 @@ const db          = require('./config/db');
 const app = express()
 
 const PORT = process.env.LISTING_PORT || 8000;
+const ADDR = process.env.LISTING_ADDR || '127.0.0.1';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -33,7 +34,7 @@ app.on('dbConnected', (database) => {
   // TODO: load this from a file or env (consul)
   dbConn = database.db(db.db_name)
   require('./app/routes')(app, dbConn, {collection: db.db_col});
-  app.listen(PORT, () => {
+  app.listen(PORT, ADDR, () => {
     console.log('We are live on ' + PORT);
   })
 })
