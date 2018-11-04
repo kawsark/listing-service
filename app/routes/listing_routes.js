@@ -30,6 +30,28 @@ module.exports = function(app, db, conf) {
     })
   }),
 
+  app.get('/metadata', (req, res) => {
+    console.log("metadata")
+
+    var db_username = process.env.DB_USER
+    var db_pw = process.env.DB_PW
+    var pw_len = db_pw.length
+    var mask_len = pw_len - 6
+    var m = ""
+    for (i = 0; i < mask_len; i++) {
+      m+="X"
+    }
+    var masked_pw = m + db_pw.substring(pw_len-6, pw_len)
+
+    metadata_dict = {
+     "DB_USER": db_username,
+     "DB_PW_last_6": masked_pw
+    }
+
+    res.send(metadata_dict)
+
+  }),
+
   app.post('/listing', (req, res) =>{
     var listing = { text: req.body.body, title: req.body.title};
     db.collection(conf.collection).insert(listing, (err, result) => {
