@@ -1,7 +1,7 @@
 exec {
   # This is the command to execute as a child process. There can be only one
   # command per process.
-  command = "/tmp/listing_wrapper.sh"
+  command = "/opt/listing-service/listing_wrapper.sh"
   splay = "5s"
 
   env {
@@ -15,7 +15,7 @@ exec {
 kill_signal = "SIGINT"
 log_level = "info"
 max_stale = "10m"
-pid_file = "/tmp/listing_wrapper.pid"
+pid_file = "/tmp/listing-service.pid"
 
 pristine = false
 reload_signal = "SIGHUP"

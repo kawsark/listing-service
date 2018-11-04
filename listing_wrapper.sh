@@ -1,4 +1,4 @@
 #!/bin/bash
 export DB_USER=${username}
 export DB_PW=${password}
-/usr/bin/node /home/ubuntu/src/listing-service/server.js
+/usr/bin/node /opt/listing-service/server.js
