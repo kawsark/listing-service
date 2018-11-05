@@ -15,7 +15,8 @@ function connectDB() {
   // TODO: add auth later (Vault)
   // require('./config/resolveSrv')(db.db_addr, db.db_port).then( (dsn) => {
   //var db_proxy_addr = 'mongodb://localhost:8001'
-  var dsn = "mongodb://" + db.db_addr + ":" + db.db_port
+  var dsn = "mongodb://" + db.db_user + ":" + db.db_pw + "@" + db.db_addr + ":" + db.db_port + "/admin"
+  //var dsn = "mongodb://" + db.db_addr + ":" + db.db_port
   console.log("Connecting to: " + dsn)
   MongoClient.connect(dsn, { useNewUrlParser: true }, function(err, database) {
     if (err) {
