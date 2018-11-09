@@ -30,7 +30,7 @@ module.exports = function(app, db, conf) {
     })
   }),
 
-  app.get('/listing/metadata', (req, res) => {
+  app.get('/metadata', (req, res) => {
     console.log("metadata")
 
     var db_username = process.env.DB_USER
